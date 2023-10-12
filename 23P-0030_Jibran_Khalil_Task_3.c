@@ -1,7 +1,6 @@
 #include <stdio.h>
-
 int Burger = 300,
-    fries = 150, cold_drink = 150,
+    fries_cold_drink = 150,
     Half_biryani = 120,
     Full_Biryani = 240,
     Chicken_piece = 70;
@@ -18,21 +17,20 @@ int main(void)
     if (choice_1 == 1)
     {
         printf("\nYou want add-on of fries or cold drink");
-        printf("\n1. Fries\n2. cold drink\n");
+        printf("\n1. Yes\n2. No\n");
         scanf("%d", &choice_with_burger);
         if (choice_with_burger == 1)
         {
             printf("Total Bill \n");
             printf(" 1 Burger Rs %d \n", Burger);
-            printf(" 1 Fries Rs %d \n", fries);
-            printf("\nTotal Rs %d",Burger+fries);
+            printf(" 1 Fries and Cold dink Rs %d \n", fries_cold_drink);
+            printf("\nTotal Rs %d",Burger+fries_cold_drink);
 
         }
         else if (choice_with_burger == 2)
         {
             printf(" 1 Burger Rs %d \n", Burger);
-            printf(" 1 Cold Drink Rs %d \n", cold_drink);
-            printf("\nTotal Rs %d",Burger+cold_drink);
+            printf("\nTotal Rs %d",Burger);
 
         }
         else

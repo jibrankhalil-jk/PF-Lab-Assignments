@@ -1,7 +1,7 @@
 
 #include <stdio.h>
 
-int balance_in_count = 10000, saving_Amount = 5000;
+int current_amount = 10000, saving_Amount = 5000;
 void withdraw_amount(int amount, int submenu);
 void withdraw();
 void deposit_amount(int amount, int submenu);
@@ -13,7 +13,6 @@ int main()
     int selected_menu;
     printf("==== ATM Menu ====");
     printf("\n1. Withdrawal\n2. Deposit\n3. Balance Inquiry\n4. Exit");
-
     printf("\nPlease select an option: ");
     scanf("%d", &selected_menu);
 
@@ -27,11 +26,11 @@ int main()
         break;
     case 3:
         balance_query();
-
         break;
     case 4:
-        break;
+        printf("\nExiting...");
 
+        break;
     default:
         printf("\nInvalid choice. Please select a valid option (1/2/3/4).");
         break;
@@ -48,33 +47,34 @@ void withdraw()
     printf("\n1. Current Account\n2. Saving Account");
     printf("\nPlease select an option: ");
     scanf("%d", &sub_menu);
-    switch (sub_menu)
+
+    if (sub_menu == 1)
     {
-    case 1:
         printf("Enter the amount you want to withdraw: ");
         scanf("%d", &amount_to_withdraw);
         withdraw_amount(amount_to_withdraw, sub_menu);
-        break;
-    case 2:
+    }
+    else if (sub_menu == 2)
+    {
         printf("Enter the amount you want to withdraw: ");
         scanf("%d", &amount_to_withdraw);
         withdraw_amount(amount_to_withdraw, sub_menu);
-        break;
-    default:
+    }
+    else
+    {
         printf("Invalid choice");
     }
 }
-
 void withdraw_amount(int amount, int submenu)
 {
     if (submenu == 1)
     {
-        if (amount <= balance_in_count)
+        if (amount <= current_amount)
         {
-            balance_in_count -= amount;
+            current_amount -= amount;
 
             printf("\nCash withdraw sucessful");
-            printf("\nBalance in current Accountis %d R.s", balance_in_count);
+            printf("\nBalance in current Accountis %d R.s", current_amount);
         }
         else
         {
@@ -105,19 +105,21 @@ void deposit()
     printf("\n1. Current Account\n2. Saving Account");
     printf("\nPlease select an option: ");
     scanf("%d", &sub_menu);
-    switch (sub_menu)
+
+    if (sub_menu == 1)
     {
-    case 1:
         printf("Enter the amount you want to deposit: ");
         scanf("%d", &amount_to_deposit);
         deposit_amount(amount_to_deposit, sub_menu);
-        break;
-    case 2:
+    }
+    else if (sub_menu == 2)
+    {
         printf("Enter the amount you want to deposit: ");
         scanf("%d", &amount_to_deposit);
         deposit_amount(amount_to_deposit, sub_menu);
-        break;
-    default:
+    }
+    else
+    {
         printf("Invalid choice");
     }
 }
@@ -128,9 +130,9 @@ void deposit_amount(int amount, int submenu)
     {
         if (amount >= 1)
         {
-            balance_in_count += amount;
+            current_amount += amount;
             printf("\nCash deposit sucessful");
-            printf("\nBalance in current Accountis %d R.s", balance_in_count);
+            printf("\nBalance in current Accountis %d R.s", current_amount);
         }
         else
         {
@@ -147,8 +149,7 @@ void deposit_amount(int amount, int submenu)
         }
         else
         {
-                        printf("\nAmount you entered is Not Valid");
-
+            printf("\nAmount you entered is Not Valid");
         }
     }
 }
@@ -161,16 +162,16 @@ void balance_query()
     printf("\n1. Current Account\n2. Saving Account");
     printf("\nPlease select an option: ");
     scanf("%d", &sub_menu);
-    switch (sub_menu)
+    if (sub_menu == 1)
     {
-    case 1:
-        printf("Balance in current Accountis %d R.s", balance_in_count);
-        break;
-    case 2:
+        printf("Balance in current Accountis %d R.s", current_amount);
+    }
+    else if (sub_menu == 2)
+    {
         printf("Balance in Saving Accountis %d R.s", saving_Amount);
-
-        break;
-    default:
+    }
+    else
+    {
         printf("\nInvalid choice. Please select a valid option (1/2/3/4).");
     }
 }
